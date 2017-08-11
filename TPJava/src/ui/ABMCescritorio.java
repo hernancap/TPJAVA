@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import data.Conexion;
@@ -12,6 +13,7 @@ import data.Conexion;
 import java.sql.*;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -25,7 +27,6 @@ import java.awt.event.ActionEvent;
 public class ABMCescritorio extends JFrame {
 	private static JTextField txtUsuario;
 	private static JTextField textContraseña;
-	static boolean ingr;
 	
 
 	/**
@@ -42,15 +43,6 @@ public class ABMCescritorio extends JFrame {
 				}
 			}
 		});
-		
-		ingr = login();
-		
-		if(ingr){
-			System.out.println("Ingreso Correcto");
-		}
-		else{
-			System.out.println("Ingreso incorrecto");
-		}
 		
 		
 		
@@ -80,26 +72,44 @@ public class ABMCescritorio extends JFrame {
 		txtUsuario.setBounds(147, 59, 134, 20);
 		getContentPane().add(txtUsuario);
 		txtUsuario.setColumns(10);
-		
-		textContraseña = new JTextField();
+		txtUsuario.addActionListener(new ActionListener(){
+			
+			
+            public void actionPerformed(ActionEvent e){
+            	
+            	login();
+            }
+		});
+		textContraseña = new JPasswordField();
 		textContraseña.setBounds(147, 122, 134, 20);
 		getContentPane().add(textContraseña);
 		textContraseña.setColumns(10);
+		textContraseña.addActionListener(new ActionListener(){
+
+            public void actionPerformed(ActionEvent e){
+            	
+            	login();
+            	
+            }
+		});
 		
 		JButton btnEntrar = new JButton("Entrar");
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				login();
 			}
 		});
 		btnEntrar.setBounds(216, 208, 105, 31);
 		getContentPane().add(btnEntrar);
 	}
 	
-	private static boolean login(){
+
+	private void login(){
 		String usu;
 		String pass;
-		String usucomp = null;
-		boolean ingresoCorrecto;
+		String usuEncon = null;
+		
 		
 		
 		
@@ -111,11 +121,14 @@ public class ABMCescritorio extends JFrame {
 		ResultSet rs=null;
 		try {
 			stmt=Conexion.getInstancia().getConn().prepareStatement(
-					"select usuario from persona where pass=?");
+					"select usuario, contraseña from persona where contraseña=? and usuario=?");
 			stmt.setString(1, pass);
+			stmt.setString(2, usu);
 			rs=stmt.executeQuery();
-			usucomp=rs.getString("usuario");
-
+			if(rs!=null && rs.next()){
+			usuEncon=rs.getString("usuario");
+			
+			}	
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -127,16 +140,40 @@ public class ABMCescritorio extends JFrame {
 			Conexion.getInstancia().releaseConn();
 		} catch (SQLException e) {
 			e.printStackTrace();
-}
+		  }
 		
-		if(usucomp == pass){
-			ingresoCorrecto = true;
+		if(usuEncon != null){
+			System.out.println("Ingreso Correcto");
+			dispose();
+			
+			nuevaVentana();
+	
+		
+			
 		}
-		else{ingresoCorrecto = false;}
+		else{
+		System.out.println("Ingreso incorrecto");
+		JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");}
 			
 		
-		return ingresoCorrecto;
+		
 			
+	}
+	
+	private void nuevaVentana(){
+		
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ABMCescritorio2 frame = new ABMCescritorio2();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	
 	}
 	
 
