@@ -8,9 +8,12 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
+import controlers.CtrlPersona;
 import data.Conexion;
 
 import java.sql.*;
+
+import entity.Persona;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,9 +27,12 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ABMCescritorio extends JFrame {
+public class Ingreso extends JFrame {
 	private static JTextField txtUsuario;
 	private static JTextField textContraseña;
+	
+	CtrlPersona ctrl= new CtrlPersona();
+
 	
 
 	/**
@@ -36,7 +42,7 @@ public class ABMCescritorio extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ABMCescritorio frame = new ABMCescritorio();
+					Ingreso frame = new Ingreso();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -51,9 +57,9 @@ public class ABMCescritorio extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ABMCescritorio() {
+	public Ingreso() {
 		setResizable(false);
-		setTitle("Login");
+		setTitle("Ingreso");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 358, 300);
 		getContentPane().setLayout(null);
@@ -106,11 +112,18 @@ public class ABMCescritorio extends JFrame {
 	
 
 	private void login(){
+		
 		String usu;
 		String pass;
+
+		
 		String usuEncon = null;
-		
-		
+		int esHab = 0;
+		String categ = null;
+		String nomUsu = null;
+		String apellUsu = null;
+		int id = 0;
+		String dni = null;
 		
 		
 		usu=(txtUsuario.getText());
@@ -121,12 +134,21 @@ public class ABMCescritorio extends JFrame {
 		ResultSet rs=null;
 		try {
 			stmt=Conexion.getInstancia().getConn().prepareStatement(
-					"select usuario, contraseña from persona where contraseña=? and usuario=?");
+					"select * from personas where contraseña=? and usuario=?");
 			stmt.setString(1, pass);
 			stmt.setString(2, usu);
 			rs=stmt.executeQuery();
 			if(rs!=null && rs.next()){
-			usuEncon=rs.getString("usuario");
+			usuEncon = rs.getString("usuario");
+			esHab = rs.getInt("habilitado");
+			categ = rs.getString("categoria");
+			nomUsu = rs.getString("nombre");
+			apellUsu = rs.getString("apellido");
+			id = rs.getInt("idpersona");
+			dni = rs.getString("dni");
+			
+			
+			
 			
 			}	
 			
@@ -144,29 +166,49 @@ public class ABMCescritorio extends JFrame {
 		
 		if(usuEncon != null){
 			System.out.println("Ingreso Correcto");
+			
+			Persona usuario = new Persona(id, dni, nomUsu, apellUsu, esHab, usu, pass, categ);
+
+			if(esHab == 1){
+				
 			dispose();
 			
-			nuevaVentana();
+				if(categ == "admin"){
 	
+				ventanaAdmin();
+				}
+				else{
+				
+					if(categ == "encargado"){
+					
+					ventanaEncarg();
+					}
+					else{ 			
+					
+					ventanaUsu(usuario);
+					}
+		
+				}
+
+			}
+			
+			else{JOptionPane.showMessageDialog(null, "Usuario no habilitado");}
 		
 			
 		}
 		else{
 		System.out.println("Ingreso incorrecto");
 		JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");}
-			
 		
-		
-			
 	}
 	
-	private void nuevaVentana(){
+	private void ventanaUsu(Persona usuario){
 		
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ABMCescritorio2 frame = new ABMCescritorio2();
+					VentanaUsuario frame = new VentanaUsuario(usuario);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -174,6 +216,38 @@ public class ABMCescritorio extends JFrame {
 			}
 		});
 	
+	}
+	
+	private void ventanaAdmin(){
+		
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaAdmin frame = new VentanaAdmin();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+	}
+	
+	private void ventanaEncarg(){
+		
+
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaEncargado frame = new VentanaEncargado();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 	}
 	
 

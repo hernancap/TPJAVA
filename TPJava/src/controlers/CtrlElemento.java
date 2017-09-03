@@ -8,7 +8,7 @@ public class CtrlElemento {
 	
 private ArrayList<Elemento> elem;
 	
-	public CtrlElemento(){
+/*	public CtrlElemento(){
 		elem = new ArrayList<Elemento>();
 		elem.add(new Elemento("Coch_1","Cochera",2));
 		elem.add(new Elemento("Proy_1","Proyector",3));
@@ -21,7 +21,7 @@ private ArrayList<Elemento> elem;
 		
 		
 		
-	}
+	}*/
 	
 	public void add(Elemento el) {
 		this.elem.add(el);

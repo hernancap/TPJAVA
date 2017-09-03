@@ -8,10 +8,10 @@ public class Persona {
 	private String apellido;
 	private String usuario;
 	private String contraseña;
-	private boolean habilitado;
+	private int habilitado;
 	private String categoria;
 	
-	public Persona (int id,String dni, String nombre, String apellido, boolean habilitado, String usuario, String contraseña, String categoria){
+	public Persona (int id,String dni, String nombre, String apellido, int habilitado, String usuario, String contraseña, String categoria){
 		this.setId(id);
 		this.setDni(dni);
 		this.setNombre(nombre);
@@ -55,10 +55,10 @@ public class Persona {
 	public void setContraseña(String contraseña) {
 		this.contraseña = contraseña;
 	}
-	public boolean isHabilitado() {
+	public int getHabilitado() {
 		return habilitado;
 	}
-	public void setHabilitado(boolean habilitado) {
+	public void setHabilitado(int habilitado) {
 		this.habilitado = habilitado;
 	}
 

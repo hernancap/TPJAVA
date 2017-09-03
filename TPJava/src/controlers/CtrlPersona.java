@@ -12,17 +12,26 @@ public class CtrlPersona {
 	
 	private ArrayList<Persona> pers;
 	
-//	public CtrlPersona(){
-//		pers= new ArrayList<Persona>();
+	public CtrlPersona(){
+		pers= new ArrayList<Persona>();
+	}
+	
+	public CtrlPersona(String a){}
+//
+		
 //		pers.add(new Persona("12121212","Juan", "Perez",true, "jperez", "jperez", "usuario"));
 //		pers.add(new Persona("13131313","Carlos", "Gomez",true, "cgomez", "cgomez", "usuario"));
 //		pers.add(new Persona("14141414","Hernan", "Caparros",true, "hcaparros", "hcaparros", "admin"));
 //		pers.add(new Persona("15151515","Walter", "Dominguez",true, "wdominguez", "wdominguez", "usuario"));
 		
-//	}
+//	
 	
 	public void add(Persona p) {
+		
 		this.pers.add(p);
+		System.out.println(pers.get(0).getNombre());
+		System.out.println(pers.get(0).getNombre());
+
 	}
 	
 	public void delete(Persona p){
@@ -34,14 +43,18 @@ public class CtrlPersona {
 		this.add(p);
 	}
 	
-	public static void mostrarPersona(){
+
+
+	
+	
+	public ArrayList<Persona> mostrarPersona(){
 		
 		Statement stmt=null;
 		ResultSet rs=null;
 		ArrayList<Persona> pers= new ArrayList<Persona>();
 		try {
 			stmt = Conexion.getInstancia().getConn().createStatement();
-			rs = stmt.executeQuery("select * from persona");
+			rs = stmt.executeQuery("select * from personas");
 			if(rs!=null){
 				while(rs.next()){
 					Persona p=new Persona();
@@ -49,7 +62,7 @@ public class CtrlPersona {
 					p.setNombre(rs.getString("nombre"));
 					p.setApellido(rs.getString("apellido"));
 					p.setDni(rs.getString("dni"));
-					p.setHabilitado(rs.getBoolean("habilitado"));
+					p.setHabilitado(rs.getInt("habilitado"));
 					pers.add(p);
 				}
 			}
@@ -71,12 +84,15 @@ public class CtrlPersona {
 		
 		
 	    
-		for(int x=0;x<pers.size();x++) {
+/*		for(int x=0;x<pers.size();x++) {
 			
 			Persona pe = pers.get(x);
 			 System.out.println(pe.getNombre() + pe.getApellido());
-			}
+			}*/
+		return pers;
 	}
+	
+
 	
 
 }

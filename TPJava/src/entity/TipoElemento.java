@@ -4,13 +4,17 @@ public class TipoElemento{
 	
 	private String nombreTipo;
 	private int cantMaxRes;
+	private int idTipo;
 	
-	public TipoElemento(String nombreTipo, int cantMaxRes) {
+	public TipoElemento(int idTipo, String nombreTipo, int cantMaxRes) {
+		setIdTipo(idTipo);
 		setCantMaxRes(cantMaxRes);
 		setNombreTipo(nombreTipo);
 		
 		
 	}
+
+	public TipoElemento() {	}
 
 	public int getCantMaxRes() {
 		return cantMaxRes;
@@ -26,6 +30,14 @@ public class TipoElemento{
 
 	public void setNombreTipo(String nombreTipo) {
 		this.nombreTipo = nombreTipo;
+	}
+
+	public int getIdTipo() {
+		return idTipo;
+	}
+
+	public void setIdTipo(int idTipo) {
+		this.idTipo = idTipo;
 	}
 	
 
