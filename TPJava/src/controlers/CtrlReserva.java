@@ -20,51 +20,6 @@ public class CtrlReserva {
 	private ArrayList<Reserva> res;
 
 	
-	public ArrayList<Reserva> buscarReserva(String fechaSelec, String textDet, String teSelec){
-		
-		
-		
-		
-		PreparedStatement stmt=null;
-		ResultSet rs=null;
-		ArrayList<Reserva> tipos= new ArrayList<Reserva>();
-		try {
-			stmt=Conexion.getInstancia().getConn().prepareStatement("select tiempoUso, fechayhora, nomElem from reservas "
-					+ "where nomTipo = ?");
-			stmt.setString(1, teSelec);
-			rs = stmt.executeQuery();
-		
-			if(rs != null){
-				while(rs.next()){
-					ArrayList<Elemento> lista = new ArrayList<Elemento>();
-					Elemento e = new Elemento();
-					tipos.add(r);
-				}
-			}
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-		}
-		
-
-		try {
-			if(rs!=null) rs.close();
-			if(stmt!=null) stmt.close();
-			Conexion.getInstancia().releaseConn();
-		} catch (SQLException e) {
-			
-			e.printStackTrace();
-}
-		
-		
-
-		
-		
-		
-		return res;
-
-}
-	
 	
 	
 	public ArrayList<Reserva> mostrarReservas(){
@@ -82,11 +37,7 @@ public class CtrlReserva {
 				while(rs.next()){
 					Reserva r =new Reserva();
 					r.setId(rs.getInt("idreservas"));
-					r.setNomElem(rs.getString("nomElem"));
-					r.setNomTipo(rs.getString("nomTipo"));
-					r.setFechayhora(rs.getString("fechayhora"));
-					r.setTiempoUso(rs.getInt("tiempoUso"));
-					r.setIdUsuario(rs.getInt("idUsuario"));
+
 					r.setDetalle(rs.getString("detalle"));
 					tipos.add(r);
 				}
@@ -115,24 +66,49 @@ public class CtrlReserva {
 
 }
 	
-	 public Date sumarRestarHorasFecha(Date fecha, int horas){
+	public void nuevaReservas(){
+
+	
+/*		Reserva r = new Reserva();
+		
+		
+		PreparedStatement stmt=null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=Conexion.getInstancia().getConn()
+					.prepareStatement(
+					"insert into persona(dni, nombre, apellido, habilitado, usuario, contraseña, categoria) values (?,?,?,?,?,?,?)",
+					PreparedStatement.RETURN_GENERATED_KEYS
+					);
+			stmt.setString(1, p.getDni());
+			stmt.setString(2, p.getNombre());
+			stmt.setString(3, p.getApellido());
+			stmt.setBoolean(4, p.isHabilitado());
+			stmt.setString(5, p.getUsuario());
+			stmt.setString(6, p.getContraseña());
+			stmt.setString(7, p.getCategoria());
+			stmt.executeUpdate();
+			keyResultSet=stmt.getGeneratedKeys();
+			if(keyResultSet!=null && keyResultSet.next()){
+				p.setId(keyResultSet.getInt(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if(keyResultSet!=null)keyResultSet.close();
+			if(stmt!=null)stmt.close();
+			Conexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
 
-		       Calendar calendar = Calendar.getInstance();
+*/	
+    
+     
 
-
-
-		       calendar.setTime(fecha); // Configuramos la fecha que se recibe
-
-
-
-		       calendar.add(Calendar.HOUR, horas);  // numero de horas a añadir, o restar en caso de horas<0
-
-
-		       return calendar.getTime(); // Devuelve el objeto Date con las nuevas horas añadidas
-
-
-		  }
+}
 
 
 }

@@ -11,7 +11,6 @@ public class TipoElemento{
 		setCantMaxRes(cantMaxRes);
 		setNombreTipo(nombreTipo);
 		
-		
 	}
 
 	public TipoElemento() {	}

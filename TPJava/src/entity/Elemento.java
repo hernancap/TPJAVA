@@ -1,22 +1,26 @@
 package entity;
 
-public class Elemento extends TipoElemento {
+public class Elemento{
 	
+	private int idElem;
 	private String nombre;
-	private int IdElem;
+	private TipoElemento tipo;
+
 	
-	public Elemento(int IdElem, int idTipos, String nombre, String nombreTipo, int cantMaxRes){		
-		super(idTipos, nombreTipo, cantMaxRes);
+	public Elemento(int IdElem, String nombre){	
 		setNombre(nombre);
 		setIdElem(IdElem);
 		
 	}
-	
-	public Elemento(String nombre){
-		
-		setNombre(nombre);
 
-		
+	public Elemento() {}
+
+	public void setTipo(TipoElemento tipo){
+		this.tipo=tipo;
+	}
+	
+	public TipoElemento getTipo(){
+		return tipo;
 	}
 
 	public String getNombre() {
@@ -28,11 +32,11 @@ public class Elemento extends TipoElemento {
 	}
 
 	public int getIdElem() {
-		return IdElem;
+		return idElem;
 	}
 
 	public void setIdElem(int idElem) {
-		IdElem = idElem;
+		this.idElem = idElem;
 	}
 	
 	

@@ -3,25 +3,47 @@ package entity;
 public class Reserva {
 	
 	private int id;
-	private String nomElem;
-	private String nomTipo;
+	private TipoElemento tipo;
+	private Elemento elem;
 	private String fechayhora;
 	private int tiempoUso;
-	private int idUsuario;
+	private Persona per;
 	private String detalle;
 	
-	public Reserva (int id,String nomElem, String nomTipo, String fechayhora, int tiempoUso, int idUsuario, String detalle){
+	public TipoElemento getTipo(){
+		return tipo;
+	}
+	
+	public void setTipo(TipoElemento tipo){
+		this.tipo=tipo;
+	}
+	
+	public Elemento getElemento(){
+		return elem;
+	}
+	
+	public void setElemento(Elemento elem){
+		this.elem=elem;
+	}	
+	
+	public Persona getPersona(){
+		return per;
+	}
+	
+	public void setPersona(Persona per){
+		this.per=per;
+	}	
+	
+	public Reserva (int id,String fechayhora, int tiempoUso, String detalle){
 		
 		this.setId(id);
-		this.setNomElem(nomElem);
-		this.setNomTipo(nomTipo);
 		this.setFechayhora(fechayhora);
 		this.setTiempoUso(tiempoUso);
-		this.setIdUsuario(idUsuario);
 		this.setDetalle(detalle);
-		
 
 	}
+	
+
 	
 	public Reserva(){}
 
@@ -31,22 +53,6 @@ public class Reserva {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getNomElem() {
-		return nomElem;
-	}
-
-	public void setNomElem(String nomElem) {
-		this.nomElem = nomElem;
-	}
-
-	public String getNomTipo() {
-		return nomTipo;
-	}
-
-	public void setNomTipo(String nomTipo) {
-		this.nomTipo = nomTipo;
 	}
 
 	public String getFechayhora() {
@@ -65,20 +71,13 @@ public class Reserva {
 		this.tiempoUso = tiempoUso;
 	}
 
-	public int getIdUsuario() {
-		return idUsuario;
-	}
-
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
-	}
-
 	public String getDetalle() {
 		return detalle;
 	}
 
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
-	};
+	}
+
 
 }

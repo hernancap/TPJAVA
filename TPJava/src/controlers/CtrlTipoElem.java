@@ -13,15 +13,6 @@ public class CtrlTipoElem {
 	
 	private ArrayList<TipoElemento> tipos;
 	
-/*	public CtrlTipoElem(){
-		tipos= new ArrayList<TipoElemento>();
-		tipos.add(new TipoElemento("Cochera",2));
-		tipos.add(new TipoElemento("Proyector",3));
-		tipos.add(new TipoElemento("Notebook",1));
-		tipos.add(new TipoElemento("Impresora",2));
-		
-	}*/
-	
 	public void add(TipoElemento te) {
 		this.tipos.add(te);
 	}

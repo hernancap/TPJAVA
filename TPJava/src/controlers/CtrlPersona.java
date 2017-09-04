@@ -17,14 +17,7 @@ public class CtrlPersona {
 	}
 	
 	public CtrlPersona(String a){}
-//
-		
-//		pers.add(new Persona("12121212","Juan", "Perez",true, "jperez", "jperez", "usuario"));
-//		pers.add(new Persona("13131313","Carlos", "Gomez",true, "cgomez", "cgomez", "usuario"));
-//		pers.add(new Persona("14141414","Hernan", "Caparros",true, "hcaparros", "hcaparros", "admin"));
-//		pers.add(new Persona("15151515","Walter", "Dominguez",true, "wdominguez", "wdominguez", "usuario"));
-		
-//	
+
 	
 	public void add(Persona p) {
 		
@@ -83,12 +76,7 @@ public class CtrlPersona {
 		
 		
 		
-	    
-/*		for(int x=0;x<pers.size();x++) {
-			
-			Persona pe = pers.get(x);
-			 System.out.println(pe.getNombre() + pe.getApellido());
-			}*/
+
 		return pers;
 	}
 	
