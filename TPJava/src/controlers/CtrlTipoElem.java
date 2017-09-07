@@ -3,7 +3,13 @@ package controlers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import data.Conexion;
 import entity.Persona;
@@ -40,6 +46,9 @@ public class CtrlTipoElem {
 					te.setIdTipo(rs.getInt("idtipo"));
 					te.setCantMaxRes(rs.getInt("cantMaxRes"));
 					te.setNombreTipo(rs.getString("nombre"));
+					te.setMaxDiasAnticip(rs.getInt("maxDiasAnticip"));
+					te.setSoloEncarg(rs.getInt("soloEncarg"));
+					
 					tipos.add(te);
 				}
 			}
@@ -60,5 +69,46 @@ public class CtrlTipoElem {
 		return tipos;
 
 }
+
+	public boolean validarAntip(String año, String mes, String dia, String teSelec) {
+
+		ArrayList<TipoElemento> tipos= new ArrayList<TipoElemento>();
+		String fechaSel = (año+"-"+mes+"-"+dia);
+		DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar calSelec  = Calendar.getInstance();
+		try {
+			calSelec.setTime(format.parse(fechaSel));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		Calendar fechaAct = Calendar.getInstance();
+		long difDias = daysBetween(fechaAct, calSelec);
+		tipos = mostrarTipos();
+		for( int x = 0 ; x  < tipos.size(); x++){
+
+			
+            if(tipos.get(x).getNombreTipo().equals(teSelec)){
+            	
+            	if(tipos.get(x).getMaxDiasAnticip()<difDias || tipos.get(x).getMaxDiasAnticip() == 0){
+            		
+            		return true;
+            	}
+            	
+            	else{return false;}
+            }                      		
+		}
+		
+		return false;
+		
+	}
+	
+	public static long daysBetween(Calendar startDate, Calendar endDate) {
+	    long end = endDate.getTimeInMillis();
+	    long start = startDate.getTimeInMillis();
+	    return TimeUnit.MILLISECONDS.toDays(Math.abs(end - start));
+	}
+	
+
 	
 }

@@ -175,7 +175,6 @@ public class VentanaUsuario extends JFrame {
 	    boxHora.addItem("21:00");
 	    boxHora.addItem("22:00");
 	    boxHora.addItem("23:00");
-	    boxHora.addItem("24:00");
 	    
 	    boxHora.setSelectedIndex(-1);
 	    
@@ -226,6 +225,11 @@ public class VentanaUsuario extends JFrame {
 		btnBuscarElem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				if (validarCampos(boxHora, dateChooser) == false){
+					
+					JOptionPane.showMessageDialog(null, "No has completado todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+				
 				String año = Integer.toString(dateChooser.getCalendar().get(Calendar.YEAR));
 				String mes = Integer.toString(dateChooser.getCalendar().get(Calendar.MONTH) + 1);
 				String dia = Integer.toString(dateChooser.getCalendar().get(Calendar.DAY_OF_MONTH));
@@ -239,22 +243,24 @@ public class VentanaUsuario extends JFrame {
 				String tipoTiempoSelec = (String) boxTiempoRes.getSelectedItem();
 
 				
-				System.out.println(tiempoRes);
-				
-				System.out.println(tiempoRes);
-
-				
 				if (tipoTiempoSelec == "Días"){
 					horasRes = (tiempoRes * 24);
 					
-					System.out.println(horasRes);
-					
-					System.out.println(horasRes);
-
-					
-					
 
 				} else{ horasRes = tiempoRes;}
+				
+				
+				
+				
+				
+				
+				
+				if( ctrlTipo.validarAntip(año, mes, dia, teSelec) == false ){
+					
+					JOptionPane.showMessageDialog(null, "No se puede reservar "+teSelec+" con tan pocos días de anticipación");
+				}
+					
+				else{	
 				
 				
 				elemDisp = ctrlElem.buscarElemento(fechaSelec, teSelec, horasRes);
@@ -276,11 +282,14 @@ public class VentanaUsuario extends JFrame {
 				
 				JOptionPane.showMessageDialog(null, "No hay elementos disponibles");}
 
-				
+				}
 
 			}
 
 
+
+
+			}
 		});
 		btnBuscarElem.setBounds(199, 245, 172, 32);
 		contentPane.add(btnBuscarElem);
@@ -328,6 +337,22 @@ public class VentanaUsuario extends JFrame {
 	void agregarRes(Elemento elemSel){
 		
 		nuevaRes.getElemento().setIdElem(elemSel.getIdElem());
+		
+	}
+	
+
+	private boolean validarCampos(JComboBox<String> boxHora, JDateChooser dateChooser) {
+		
+		if(boxTipoElem.getSelectedIndex() != (-1) && !txtTiempoRes.getText().isEmpty() && boxHora.getSelectedIndex() != (-1) &&
+				dateChooser.getDate()!=null){
+			
+			return true;
+			
+			
+		}else {  return false;}
+
+		
+		
 		
 	}
 	

@@ -198,7 +198,7 @@ public class Ingreso extends JFrame {
 		}
 		else{
 		System.out.println("Ingreso incorrecto");
-		JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos");}
+		JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);}
 		
 	}
 	
