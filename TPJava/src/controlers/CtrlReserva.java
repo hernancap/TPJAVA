@@ -66,10 +66,10 @@ public class CtrlReserva {
 
 }
 	
-	public void nuevaReservas(){
+	public void nuevaReserva(){
 
 	
-/*		Reserva r = new Reserva();
+/*		Reserva r = new Reserva(); 
 		
 		
 		PreparedStatement stmt=null;
@@ -77,16 +77,16 @@ public class CtrlReserva {
 		try {
 			stmt=Conexion.getInstancia().getConn()
 					.prepareStatement(
-					"insert into persona(dni, nombre, apellido, habilitado, usuario, contraseña, categoria) values (?,?,?,?,?,?,?)",
+					"insert into Reserva( , , , ,) values (?,?,?,?,?,?,?)",
 					PreparedStatement.RETURN_GENERATED_KEYS
 					);
-			stmt.setString(1, p.getDni());
-			stmt.setString(2, p.getNombre());
-			stmt.setString(3, p.getApellido());
-			stmt.setBoolean(4, p.isHabilitado());
-			stmt.setString(5, p.getUsuario());
-			stmt.setString(6, p.getContraseña());
-			stmt.setString(7, p.getCategoria());
+			stmt.setString(1, r.get());
+			stmt.setString(2, r.get());
+			stmt.setString(3, r.get());
+			stmt.setBoolean(4, r.());
+			stmt.setString(5, r.get());
+			stmt.setString(6, r.get());
+			stmt.setString(7, r.get());
 			stmt.executeUpdate();
 			keyResultSet=stmt.getGeneratedKeys();
 			if(keyResultSet!=null && keyResultSet.next()){

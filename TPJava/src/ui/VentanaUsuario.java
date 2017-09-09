@@ -107,7 +107,7 @@ public class VentanaUsuario extends JFrame {
 		btnVerReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//-------------------------------------------------------------------
+				//------------------------------------------------------------------- usar ctrlRes.nuevaReserva()
 			}
 		});
 		btnVerReservas.setBounds(372, 7, 156, 23);
@@ -250,7 +250,7 @@ public class VentanaUsuario extends JFrame {
 				} else{ horasRes = tiempoRes;}
 				
 				
-				
+				/* corregir bug -------------------------------------------------------------------*/
 				
 				
 				
