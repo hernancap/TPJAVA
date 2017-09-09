@@ -1,0 +1,19 @@
+Integrante: Hernán Caparros - Legajo: 40283 - mail: hernancaparros@hotmail.com - github: https://github.com/hernancap/TPJAVA
+
+Etapa del trabajo: Primera entrega (Incompleto)
+Objetivo del trabajo: Promoción
+
+Progreso del trabajo:
+
+- Login (Valido usuario, contraseña y si está habilitado para ingresar al sistema)
+- Consulta de elementos disponibles para los datos ingresados, mostrados en una tabla
+- Los tipos de elementos pueden tener una cantidad máxima de días de anticipación para ser reservados (Req. promoción)
+
+Falta:
+
+- ABM Personas (A tener listo para el viernes 15/09)
+- ABMC Tipo Elem (A tener listo para el viernes 15/09)
+- ABM Elementos (A tener listo para el viernes 15/09)
+- ABMC Reservas (A tener listo para el viernes 15/09)
+- Req. para pomoción
+- Revisar y pulir el código
