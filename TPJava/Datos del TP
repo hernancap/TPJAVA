@@ -7,7 +7,7 @@ Progreso del trabajo:
 
 - Login (Valido usuario, contraseña y si está habilitado para ingresar al sistema)
 - Consulta de elementos disponibles para los datos ingresados, mostrados en una tabla
-- Los tipos de elementos pueden tener una cantidad máxima de días de anticipación para ser reservados (Req. promoción)
+- Los tipos de elementos pueden tener una cantidad máxima de días de anticipación para ser reservados (Req. para promoción)
 
 Falta:
 
