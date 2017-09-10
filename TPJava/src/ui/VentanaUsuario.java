@@ -69,6 +69,7 @@ public class VentanaUsuario extends JFrame {
 	private ArrayList<Persona> pers;
 	private ArrayList<TipoElemento> tipoElem;
 	private ArrayList<Elemento> elemDisp;
+	private ArrayList<Reserva> listRes = new ArrayList<Reserva>();
 	
 	private Reserva nuevaRes = new Reserva();
 	
@@ -91,7 +92,7 @@ public class VentanaUsuario extends JFrame {
 		
 
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 560, 317);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -107,7 +108,22 @@ public class VentanaUsuario extends JFrame {
 		btnVerReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				//------------------------------------------------------------------- usar ctrlRes.nuevaReserva()
+				listRes = ctrlRes.mostrarReservas(usuario.getId());
+				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							TablaReservas frame = new TablaReservas(listRes);
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+				
+				
+				
+				
 			}
 		});
 		btnVerReservas.setBounds(372, 7, 156, 23);
@@ -268,14 +284,19 @@ public class VentanaUsuario extends JFrame {
 				if(elemDisp != null ){
 
 				
-				mostrarElem(elemDisp);
-				nuevaRes.setDetalle(textDet);
+				nuevaRes.setDetalle(textDet);				
 				nuevaRes.setFechayhora(fechaSelec);
 				nuevaRes.setTiempoUso(horasRes);
 				nuevaRes.setTipo(new TipoElemento());
 				nuevaRes.getTipo().setNombreTipo(teSelec);
 				nuevaRes.setPersona(new Persona());
 				nuevaRes.getPersona().setId(usuario.getId());
+				
+				mostrarElem(elemDisp, nuevaRes);
+
+				
+				
+				
 				
 				}
 				else{
@@ -319,11 +340,11 @@ public class VentanaUsuario extends JFrame {
 	protected void initDataBindings() {
 	}
 	
-	private void mostrarElem(ArrayList<Elemento> elemDisp) {
+	private void mostrarElem(ArrayList<Elemento> elemDisp, Reserva nuevRes) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					SeleccionarElem frame = new SeleccionarElem(elemDisp);
+					SeleccionarElem frame = new SeleccionarElem(elemDisp, nuevaRes);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -334,9 +355,17 @@ public class VentanaUsuario extends JFrame {
 		
 	}
 	
-	void agregarRes(Elemento elemSel){
+	void agregarRes(Elemento elemSel, Reserva nuevaRes){
 		
+		
+		nuevaRes.setElemento(new Elemento());
 		nuevaRes.getElemento().setIdElem(elemSel.getIdElem());
+
+		
+		
+		
+		ctrlRes.nuevaReserva(nuevaRes);
+		
 		
 	}
 	

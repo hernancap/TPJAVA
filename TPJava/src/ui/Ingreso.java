@@ -173,13 +173,16 @@ public class Ingreso extends JFrame {
 				
 			dispose();
 			
-				if(categ == "admin"){
+				if(categ.equals("admin")){
+					
+					
+					
 	
-				ventanaAdmin();
+				ventanaAdmin(usuario);
 				}
 				else{
 				
-					if(categ == "encargado"){
+					if(categ.equals("encargado")){
 					
 					ventanaEncarg();
 					}
@@ -202,7 +205,7 @@ public class Ingreso extends JFrame {
 		
 	}
 	
-	private void ventanaUsu(Persona usuario){
+	void ventanaUsu(Persona usuario){
 		
 
 		EventQueue.invokeLater(new Runnable() {
@@ -218,13 +221,13 @@ public class Ingreso extends JFrame {
 	
 	}
 	
-	private void ventanaAdmin(){
+	private void ventanaAdmin(Persona usuario){
 		
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaAdmin frame = new VentanaAdmin();
+					VentanaAdmin frame = new VentanaAdmin(usuario);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();

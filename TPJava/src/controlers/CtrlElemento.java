@@ -38,9 +38,7 @@ private ArrayList<Elemento> elem;
 			stmt.setInt(3, tiempoRes);
 			stmt.setString(4, teSelec);
 			rs = stmt.executeQuery();
-			System.out.println(fechaSelec);
-			System.out.println(tiempoRes);
-			System.out.println(teSelec);
+
 		
 			if(rs != null){
 				while(rs.next()){
@@ -50,8 +48,7 @@ private ArrayList<Elemento> elem;
 					e.setIdElem(rs.getInt("ele.idelemento"));
 					e.setNombre(rs.getString("ele.nombre"));					
 					elemDisp.add(e);
-					System.out.println(e.getIdElem());
-					System.out.println(e.getNombre());
+
 				}
 			}
 			

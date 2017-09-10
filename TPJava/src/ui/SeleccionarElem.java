@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import entity.Elemento;
+import entity.Reserva;
+
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
@@ -33,7 +35,7 @@ public class SeleccionarElem extends JFrame {
 	private Elemento elemSel;
 
 
-	public SeleccionarElem(ArrayList<Elemento> elemDisp) {
+	public SeleccionarElem(ArrayList<Elemento> elemDisp, Reserva nuevaRes) {
 		setAlwaysOnTop(true);
 		
 		setResizable(false);
@@ -78,8 +80,9 @@ public class SeleccionarElem extends JFrame {
 			
 			
 			VentanaUsuario vu = new VentanaUsuario();
+			
 
-			vu.agregarRes(elemSel);
+			vu.agregarRes(elemSel, nuevaRes);
 			
 			dispose();
 			
