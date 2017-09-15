@@ -3,6 +3,7 @@ package controlers;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -82,6 +83,155 @@ private ArrayList<Elemento> elem;
 	public void update(Elemento el){
 		this.delete(el);
 		this.add(el);
+	}
+
+	public ArrayList<Elemento> mostrarElem() {
+		
+		Statement stmt=null;
+		ResultSet rs=null;
+		ArrayList<Elemento> elem= new ArrayList<Elemento>();
+		try {
+			stmt = Conexion.getInstancia().getConn().createStatement();
+			rs = stmt.executeQuery("select * from elementos");
+			if(rs!=null){
+				while(rs.next()){
+					Elemento el =new Elemento();
+					el.setTipo(new TipoElemento());
+					el.setIdElem(rs.getInt("idelemento"));
+					el.getTipo().setNombreTipo(rs.getString("tipoElem"));
+					el.setNombre(rs.getString("nombre"));
+					
+					elem.add(el);
+				}
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+
+		try {
+			if(rs!=null) rs.close();
+			if(stmt!=null) stmt.close();
+			Conexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+}
+		return elem;
+
+
+		
+		
+		
+	}
+
+	public void eliminarElem(Elemento elem2) {
+
+	
+		
+		
+		PreparedStatement stmt=null;
+
+			try {
+				stmt=Conexion.getInstancia().getConn()
+						.prepareStatement(
+						"delete from elementos where idelemento = ?"
+
+						);
+			stmt.setInt(1, elem2.getIdElem());
+			stmt.executeUpdate();				
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			try {
+				if(stmt!=null)stmt.close();
+				Conexion.getInstancia().releaseConn();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+		
+	
+		
+	}
+
+	public void nuevoElem(Elemento elem2, boolean editar) {
+		
+		if (editar == false){
+		
+		
+		PreparedStatement stmt=null;
+		ResultSet keyResultSet=null;
+		try {
+			stmt=Conexion.getInstancia().getConn()
+					.prepareStatement(
+					"insert into elementos(nombre, tipoElem)"
+					+ " values (?,?)",
+					PreparedStatement.RETURN_GENERATED_KEYS
+					);
+			stmt.setString(1, elem2.getNombre());
+			stmt.setString(2, elem2.getTipo().getNombreTipo());
+
+			stmt.executeUpdate();
+			keyResultSet=stmt.getGeneratedKeys();
+			if(keyResultSet!=null && keyResultSet.next()){
+				elem2.setIdElem(keyResultSet.getInt(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		try {
+			if(keyResultSet!=null)keyResultSet.close();
+			if(stmt!=null)stmt.close();
+			Conexion.getInstancia().releaseConn();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		} else{
+			
+			
+			PreparedStatement stmt=null;
+
+				try {
+					stmt=Conexion.getInstancia().getConn()
+							.prepareStatement(
+					"update elementos set nombre = ?, tipoElem = ? where idelemento = ?;"
+
+
+							);
+				
+
+				stmt.setString(1, elem2.getNombre());
+				stmt.setString(2, elem2.getTipo().getNombreTipo());
+				stmt.setInt(3, elem2.getIdElem());
+
+
+				stmt.executeUpdate();
+
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				try {
+					if(stmt!=null)stmt.close();
+					Conexion.getInstancia().releaseConn();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+
+
+			
+		}
+	
+    
+	
+		
+	
+		
+		
+		
 	}
 
 }

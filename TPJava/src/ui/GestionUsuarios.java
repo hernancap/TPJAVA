@@ -68,7 +68,7 @@ public class GestionUsuarios extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(0, 21, 385, 232);
+		scrollPane.setBounds(10, 21, 375, 232);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();

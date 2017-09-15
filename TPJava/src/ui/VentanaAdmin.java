@@ -31,7 +31,7 @@ public class VentanaAdmin extends JFrame {
 
 	public VentanaAdmin(Persona usuario) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 319);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -66,8 +66,8 @@ public class VentanaAdmin extends JFrame {
 		btnVerReservas.setBounds(254, 32, 170, 23);
 		contentPane.add(btnVerReservas);
 		
-		JButton btnNewButton = new JButton("Gestionar reservas");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnGesRes = new JButton("Gestionar reservas");
+		btnGesRes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				Ingreso in = new Ingreso();
@@ -76,8 +76,8 @@ public class VentanaAdmin extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(74, 32, 170, 23);
-		contentPane.add(btnNewButton);
+		btnGesRes.setBounds(74, 32, 170, 23);
+		contentPane.add(btnGesRes);
 		
 		JSeparator separator = new JSeparator();
 		separator.setBounds(10, 66, 414, 2);
@@ -93,8 +93,8 @@ public class VentanaAdmin extends JFrame {
 		lblUsuarios.setBounds(10, 79, 414, 14);
 		contentPane.add(lblUsuarios);
 		
-		JButton btnNewButton_1 = new JButton("Gestionar usuarios");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnGestionUsu = new JButton("Gestionar usuarios");
+		btnGestionUsu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 
@@ -115,7 +115,66 @@ public class VentanaAdmin extends JFrame {
 				
 			}
 		});
-		btnNewButton_1.setBounds(254, 101, 170, 23);
-		contentPane.add(btnNewButton_1);
+		btnGestionUsu.setBounds(254, 101, 170, 23);
+		contentPane.add(btnGestionUsu);
+		
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(10, 135, 414, 2);
+		contentPane.add(separator_1);
+		
+		JLabel lblElementos = new JLabel("Elementos");
+		lblElementos.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblElementos.setBounds(10, 148, 414, 14);
+		contentPane.add(lblElementos);
+		
+		JButton btnGestionElem = new JButton("Gestionar elementos");
+		btnGestionElem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							GestionElementos frame = new GestionElementos();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			
+				
+				
+				
+			}
+		});
+		btnGestionElem.setBounds(254, 173, 170, 23);
+		contentPane.add(btnGestionElem);
+		
+		JSeparator separator_2 = new JSeparator();
+		separator_2.setBounds(10, 207, 414, 2);
+		contentPane.add(separator_2);
+		
+		JLabel lblTiposDeElemento = new JLabel("Tipos de Elemento");
+		lblTiposDeElemento.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblTiposDeElemento.setBounds(10, 220, 414, 14);
+		contentPane.add(lblTiposDeElemento);
+		
+		JButton btnGestionTipos = new JButton("Gestionar tipos");
+		btnGestionTipos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							GestionTipos frame = new GestionTipos();
+							frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		btnGestionTipos.setBounds(254, 245, 170, 23);
+		contentPane.add(btnGestionTipos);
 	}
 }

@@ -7,14 +7,16 @@ public class TipoElemento{
 	private int idTipo;
 	private int maxDiasAnticip;
 	private int soloEncarg;
+	private int horasMax;
 	
 	
-	public TipoElemento(int idTipo, String nombreTipo, int cantMaxRes, int maxDiasAnticip, int soloEncarg) {
+	public TipoElemento(int idTipo, String nombreTipo, int cantMaxRes, int maxDiasAnticip, int soloEncarg, int horasMax) {
 		setIdTipo(idTipo);
 		setCantMaxRes(cantMaxRes);
 		setNombreTipo(nombreTipo);
 		setMaxDiasAnticip(maxDiasAnticip);
 		setSoloEncarg(soloEncarg);
+		setHorasMax(horasMax);
 		
 	}
 
@@ -58,6 +60,14 @@ public class TipoElemento{
 
 	public void setSoloEncarg(int soloEncarg) {
 		this.soloEncarg = soloEncarg;
+	}
+
+	public int getHorasMax() {
+		return horasMax;
+	}
+
+	public void setHorasMax(int horasMax) {
+		this.horasMax = horasMax;
 	}
 	
 
