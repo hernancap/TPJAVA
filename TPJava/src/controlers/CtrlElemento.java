@@ -18,7 +18,7 @@ public class CtrlElemento {
 	
 private ArrayList<Elemento> elem;
 
-// falta: revisar alta de elemento cuando no se ingresa ningún nombre ----------------------------------------------------------------------
+// falta: revisar alta de elemento cuando no se ingresa ningún nombre -----------------------------------------------------------------------
 
 	
 	public ArrayList<Elemento>  buscarElemento(String fechaSelec, String teSelec, int tiempoRes){

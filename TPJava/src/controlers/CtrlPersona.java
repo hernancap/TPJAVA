@@ -38,8 +38,6 @@ public class CtrlPersona {
 		this.add(p);
 	}
 	
-
-
 	
 	
 	public ArrayList<Persona> mostrarPersona(){
