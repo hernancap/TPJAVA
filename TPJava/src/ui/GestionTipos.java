@@ -45,7 +45,8 @@ public class GestionTipos extends JFrame {
 	
 	private boolean editar = false;
 
-
+	
+	// falta validar campos-----------------------------------------------------------------------------------------------------
 
 
 

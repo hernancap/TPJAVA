@@ -181,10 +181,12 @@ public class Ingreso extends JFrame {
 				ventanaAdmin(usuario);
 				}
 				else{
+					
+					/* Revisar parte de encargado -----------------------------------------------------------------------------*/
 				
 					if(categ.equals("encargado")){
 					
-					ventanaEncarg();
+					ventanaEncarg(usuario);
 					}
 					else{ 			
 					
@@ -237,20 +239,20 @@ public class Ingreso extends JFrame {
 		
 	}
 	
-	private void ventanaEncarg(){
+	private void ventanaEncarg(Persona usuario){
 		
 
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaEncargado frame = new VentanaEncargado();
+					VentanaUsuario frame = new VentanaUsuario(usuario);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
+	
 	}
 	
 

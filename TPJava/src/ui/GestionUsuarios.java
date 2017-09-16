@@ -48,7 +48,7 @@ public class GestionUsuarios extends JFrame {
 	private JTextField txtContraseña;
 	private boolean editar = false;
 
-// falta: dispose en botones eliminar y agregar, validar todos los campos, agrandar ventana-------------------------------------------
+// falta: validar todos los campos, agrandar ventana---------------------------------------------------------------------
 
 	/**
 	 * Create the frame.
@@ -162,6 +162,8 @@ public class GestionUsuarios extends JFrame {
 				} else {per.setHabilitado(0);}
 				
 				ctrlPer.nuevaPersona(per, editar);
+				
+				dispose();
 								
 				
 			}

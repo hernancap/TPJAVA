@@ -33,6 +33,8 @@ public class SeleccionarElem extends JFrame {
 	
 	private ArrayList<Elemento> listaElem = new ArrayList<Elemento>();
 	private Elemento elemSel;
+	
+	
 
 
 	public SeleccionarElem(ArrayList<Elemento> elemDisp, Reserva nuevaRes) {

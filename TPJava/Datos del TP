@@ -1,19 +1,35 @@
 Integrante: Hernán Caparros - Legajo: 40283 - mail: hernancaparros@hotmail.com - github: https://github.com/hernancap/TPJAVA
 
-Etapa del trabajo: Primera entrega (Incompleto)
+Etapa del trabajo: Primera entrega ABMC Completos
 Objetivo del trabajo: Promoción
 
 Progreso del trabajo:
 
-- Login (Valido usuario, contraseña y si está habilitado para ingresar al sistema)
-- Consulta de elementos disponibles para los datos ingresados, mostrados en una tabla
-- Los tipos de elementos pueden tener una cantidad máxima de días de anticipación para ser reservados (Req. para promoción)
+Regularización:
+- Login (Valido usuario, contraseña y si está habilitado para ingresar al sistema).
+- ABMC Personas (A tener listo para el viernes 15/09).
+- ABMC Tipo Elem (A tener listo para el viernes 15/09).
+- ABMC Elementos (A tener listo para el viernes 15/09).
+- ABMC Reservas (A tener listo para el viernes 15/09).
+
+Promoción:
+- Las personas deben tener una categoría (encargado, admin o usuario).
+- Los tipos de elementos puden tener una cantidad máxima de días de anticipación para ser reservados.
+- Los administradores son los únicos que pueden crear usuarios y tipos de elementos.
+- Los administradores son quienes pueden habilitar o deshabilitar usuarios.
+- Los administradores pueden anular cualquier reserva pendiente, por lo que deben poder ver todas las reservas disponibles.
+
 
 Falta:
 
-- ABM Personas (A tener listo para el viernes 15/09) (Hecho)
-- ABMC Tipo Elem (A tener listo para el viernes 15/09) (Hecho)
-- ABM Elementos (A tener listo para el viernes 15/09) (Hecho)
-- ABMC Reservas (A tener listo para el viernes 15/09) (Hecho)
-- Req. para pomoción
-- Revisar y pulir el código
+Regularización:
+- Cantidad máximas de reservas pendientes: es la cantidad máxima de elementos de este tipo que cada usuario puede tener pendiente a futuro.
+- No mostrar reservas anteriores a la fecha actual.
+- Corregir bugs menores (Detallados en el código).
+- Revisar y pulir el código.
+
+Promoción:
+- Los tipos de elementos pueden exigir que sólo un encargado pueda reserver elementos de dicho tipo.
+- Los tipos de elementos pueden tener un límite máximo de tiempo de reserva (en horas) que debe controlarse durante la reserva.
+- Usar custom exceptions y log de errores.
+- Enviar emails para confirmar reservas, cancelaciones y anulaciones.

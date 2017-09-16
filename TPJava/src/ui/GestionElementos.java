@@ -49,7 +49,7 @@ public class GestionElementos extends JFrame {
 
 	
 	
-
+	// falta validar campos-----------------------------------------------------------------------------------------------------
 
 
 	/**

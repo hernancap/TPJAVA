@@ -36,7 +36,7 @@ public class TablaReservas extends JFrame {
 
 
 
-	
+	// falta: no mostrar reservas anteriores-----------------------------------------------------------------------------------
 
 
 	public TablaReservas(ArrayList<Reserva> listRes) {

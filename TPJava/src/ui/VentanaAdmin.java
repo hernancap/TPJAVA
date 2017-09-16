@@ -26,7 +26,7 @@ public class VentanaAdmin extends JFrame {
 	private ArrayList<Reserva> listRes = new ArrayList<Reserva>();
 
 
-
+	// falta bloquear ventana madre, evitar problemas en la eliminación de objetos---------------------------------------------------------
 
 
 	public VentanaAdmin(Persona usuario) {

@@ -81,6 +81,10 @@ public class VentanaUsuario extends JFrame {
 	private JComboBox boxTipoElem;
 	private JTextField txtTiempoRes;
 	
+	
+	//falta bloquear ventana madre, verificar encargado, verificar máximo de reservas-------------------------------------------------------
+	
+	
 
 	/**
 	 * Create the frame.
@@ -264,10 +268,6 @@ public class VentanaUsuario extends JFrame {
 					
 
 				} else{ horasRes = tiempoRes;}
-				
-				
-				/* corregir bug -------------------------------------------------------------------*/
-				
 				
 				
 				
