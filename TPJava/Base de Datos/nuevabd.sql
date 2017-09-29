@@ -29,7 +29,7 @@ CREATE TABLE `elementos` (
   PRIMARY KEY (`idelemento`),
   KEY `a_idx` (`tipoElem`),
   CONSTRAINT `a` FOREIGN KEY (`tipoElem`) REFERENCES `tipos` (`nombre`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `personas` (
   `categoria` varchar(45) NOT NULL,
   PRIMARY KEY (`idpersona`),
   UNIQUE KEY `idpersona_UNIQUE` (`idpersona`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -69,7 +69,7 @@ CREATE TABLE `personas` (
 
 LOCK TABLES `personas` WRITE;
 /*!40000 ALTER TABLE `personas` DISABLE KEYS */;
-INSERT INTO `personas` VALUES (1,'12121212','Juan','Perez',1,'jperez','jperez1','usuario'),(2,'13131313','Carlos','Gomez',0,'cgomez','cgomez1','usuario'),(3,'14141414','Hernan','Caparros',1,'hcaparros','hcaparros1','admin'),(4,'15151515','Walter','Dominguez',1,'wdominguez','wdominguez1','encargado'),(6,'16161616','Marco','Ruben',1,'marco','mruben1','usuario');
+INSERT INTO `personas` VALUES (1,'12121212','Juan','Perez',1,'jperez','jperez1','usuario'),(2,'13131313','Carlos','Gomez',0,'cgomez','cgomez1','usuario'),(3,'14141414','Hernan','Caparros',1,'hcaparros','hcaparros1','admin'),(4,'15151515','Walter','Dominguez',1,'wdominguez','wdominguez1','encargado');
 /*!40000 ALTER TABLE `personas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +104,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
-INSERT INTO `reservas` VALUES (1,'Cochera',11,'2017-12-18 07:00:00',168,4,'Reserva Decano Fin de Año'),(2,'Impresora',13,'2017-11-01 10:00:00',2,1,NULL),(3,'Impresora',13,'2017-11-08 10:00:00',2,1,NULL),(6,'Aula',20,'2017-11-10 18:00:00',2,3,'Clase Java'),(7,'Aula',18,'2017-10-27 19:00:00',4,3,'Parcial');
+INSERT INTO `reservas` VALUES (1,'Cochera',11,'2017-12-18 07:00:00',168,4,'Reserva Decano Fin de Año'),(2,'Impresora',13,'2017-11-01 10:00:00',2,1,NULL),(3,'Impresora',13,'2017-11-08 10:00:00',2,1,NULL),(6,'Aula',20,'2017-11-10 18:00:00',2,3,'Clase Java'),(7,'Aula',18,'2017-10-27 19:00:00',4,3,'Parcial'),(8,'Notebook',5,'2017-06-15 10:00:00',1,1,NULL);
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `tipos` (
   `soloEncarg` tinyint(1) NOT NULL,
   PRIMARY KEY (`idtipo`),
   UNIQUE KEY `nombre_UNIQUE` (`nombre`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -146,4 +146,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-15 23:42:19
+-- Dump completed on 2017-09-29  3:07:56

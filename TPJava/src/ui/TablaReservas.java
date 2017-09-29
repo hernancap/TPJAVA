@@ -3,6 +3,7 @@ package ui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -24,38 +25,60 @@ import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class TablaReservas extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 	private ArrayList<Reserva> reservas = new ArrayList<Reserva>();
+	private ArrayList<Reserva> totalReservas = new ArrayList<Reserva>();
 	private Reserva res = new Reserva();
 	private CtrlReserva ctrlRes = new CtrlReserva();
 
 
-
-	// falta: no mostrar reservas anteriores-----------------------------------------------------------------------------------
-
-
 	public TablaReservas(ArrayList<Reserva> listRes) {
+		setTitle("Reservas");
+		
+
 		setResizable(false);
 		setAlwaysOnTop(true);
 
+		totalReservas = listRes;
 		
-		reservas = listRes;
+		for (int x = 0; x < totalReservas.size(); x++ )
+		{
+			
+			Date date = new Date();
+			String fechaRes = totalReservas.get(x).getFechayhora();
+			DateFormat hourdateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			String fechaActual = hourdateFormat.format(date);
+			if( fechaRes.compareTo(fechaActual) < 0 )
+			{
+				totalReservas.remove(x);
+			}
+				
+				
+		}
+		
+		
+		
+		reservas = totalReservas;
 		
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 561, 327);
+		setBounds(100, 100, 971, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 21, 535, 232);
+		scrollPane.setBounds(10, 21, 945, 255);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -82,7 +105,7 @@ public class TablaReservas extends JFrame {
 				
 			}
 		});
-		btnEliminarReserva.setBounds(365, 260, 170, 23);
+		btnEliminarReserva.setBounds(785, 287, 170, 23);
 		contentPane.add(btnEliminarReserva);
 		initDataBindings();
 	}
@@ -113,4 +136,8 @@ public class TablaReservas extends JFrame {
 		jTableBinding.setEditable(false);
 		jTableBinding.bind();
 	}
+	
+
+	
+
 }

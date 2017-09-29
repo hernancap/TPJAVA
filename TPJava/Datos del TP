@@ -11,6 +11,8 @@ Regularización:
 - ABMC Tipo Elem (A tener listo para el viernes 15/09).
 - ABMC Elementos (A tener listo para el viernes 15/09).
 - ABMC Reservas (A tener listo para el viernes 15/09).
+- Cantidad máximas de reservas pendientes: es la cantidad máxima de elementos de este tipo que cada usuario puede tener pendiente a futuro.
+- No mostrar reservas anteriores a la fecha actual.
 
 Promoción:
 - Las personas deben tener una categoría (encargado, admin o usuario).
@@ -18,17 +20,16 @@ Promoción:
 - Los administradores son los únicos que pueden crear usuarios y tipos de elementos.
 - Los administradores son quienes pueden habilitar o deshabilitar usuarios.
 - Los administradores pueden anular cualquier reserva pendiente, por lo que deben poder ver todas las reservas disponibles.
+- Los tipos de elementos pueden exigir que sólo un encargado pueda reserver elementos de dicho tipo.
+- Los tipos de elementos pueden tener un límite máximo de tiempo de reserva (en horas) que debe controlarse durante la reserva.
+
 
 Falta:
 
 Regularización:
-- Cantidad máximas de reservas pendientes: es la cantidad máxima de elementos de este tipo que cada usuario puede tener pendiente a futuro.
-- No mostrar reservas anteriores a la fecha actual.
 - Corregir bugs menores (Detallados en el código).
 - Revisar y pulir el código.
 
 Promoción:
-- Los tipos de elementos pueden exigir que sólo un encargado pueda reserver elementos de dicho tipo.
-- Los tipos de elementos pueden tener un límite máximo de tiempo de reserva (en horas) que debe controlarse durante la reserva.
 - Usar custom exceptions y log de errores.
 - Enviar emails para confirmar reservas, cancelaciones y anulaciones.

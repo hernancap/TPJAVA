@@ -54,13 +54,6 @@ public class VentanaAdmin extends JFrame {
 					}
 				});
 				
-				
-				
-			// corregir 2 bugs ---------------------------------------------------------------------------------	
-			
-				
-				
-				
 			}
 		});
 		btnVerReservas.setBounds(254, 32, 170, 23);

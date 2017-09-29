@@ -82,7 +82,8 @@ public class VentanaUsuario extends JFrame {
 	private JTextField txtTiempoRes;
 	
 	
-	//falta bloquear ventana madre, verificar encargado, verificar máximo de reservas-------------------------------------------------------
+	
+	//falta bloquear ventana madre--------------------------------------------------------------------------------
 	
 	
 
@@ -90,6 +91,9 @@ public class VentanaUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaUsuario(Persona usuario) {
+		
+		
+		
 		setResizable(false);
 		setTitle("Reservas");
 	
@@ -108,12 +112,19 @@ public class VentanaUsuario extends JFrame {
 		lblBienvenido.setBounds(10, 11, 257, 14);
 		contentPane.add(lblBienvenido);
 		
+		
+		//
+		// Botón: Ver mis reservas
+		//
+		
 		JButton btnVerReservas = new JButton("Ver mis reservas");
 		btnVerReservas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				listRes = ctrlRes.mostrarReservas(usuario.getId());
 				
+				setEnabled(false);
+												
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -241,6 +252,13 @@ public class VentanaUsuario extends JFrame {
 	            BorderFactory.createEmptyBorder(10, 10, 10, 10)));
 		initDataBindings();
 		
+		
+		//
+		// Botón: Buscar Elementos
+		//
+		
+		
+		
 		JButton btnBuscarElem = new JButton("Buscar Elementos");
 		btnBuscarElem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -275,9 +293,24 @@ public class VentanaUsuario extends JFrame {
 					
 					JOptionPane.showMessageDialog(null, "No se puede reservar "+teSelec+" con tan pocos días de anticipación");
 				}
+								
 					
-				else{	
+				else{	if(ctrlTipo.validarCantMaxRes(teSelec, usuario.getId()) == false ){
+					
+					JOptionPane.showMessageDialog(null, "Ya alcanzó la cantidad máxima de reservas de "+teSelec+".");
+					
+				}
 				
+				else{    if(ctrlTipo.validarEncarg(teSelec, usuario.getId()) == false ){
+					
+					JOptionPane.showMessageDialog(null, "Solo un encargado puede reservar "+teSelec+".");
+					
+				} else {	if(ctrlTipo.tiempoUso(teSelec, horasRes) == false ){
+					
+					JOptionPane.showMessageDialog(null, "La cantidad de tiempo seleccionado para la reserva supera el límite máximo"
+							+ " para "+teSelec+".");
+					
+				} else {
 				
 				elemDisp = ctrlElem.buscarElemento(fechaSelec, teSelec, horasRes);
 				
@@ -306,11 +339,11 @@ public class VentanaUsuario extends JFrame {
 				}
 
 			}
+				}
+				}
+				}
 
-
-
-
-			}
+				}
 		});
 		btnBuscarElem.setBounds(199, 245, 172, 32);
 		contentPane.add(btnBuscarElem);
@@ -384,6 +417,8 @@ public class VentanaUsuario extends JFrame {
 		
 		
 	}
+	
+
 	
 
 	

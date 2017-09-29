@@ -165,8 +165,7 @@ public class Ingreso extends JFrame {
 		  }
 		
 		if(usuEncon != null){
-			System.out.println("Ingreso Correcto");
-			
+
 			Persona usuario = new Persona(id, dni, nomUsu, apellUsu, esHab, usu, pass, categ);
 
 			if(esHab == 1){
@@ -174,35 +173,21 @@ public class Ingreso extends JFrame {
 			dispose();
 			
 				if(categ.equals("admin")){
-					
-					
-					
-	
+				
 				ventanaAdmin(usuario);
 				}
-				else{
+				else{ventanaUsu(usuario);}
 					
-					/* Revisar parte de encargado -----------------------------------------------------------------------------*/
-				
-					if(categ.equals("encargado")){
-					
-					ventanaEncarg(usuario);
-					}
-					else{ 			
-					
-					ventanaUsu(usuario);
-					}
 		
 				}
 
-			}
+			
 			
 			else{JOptionPane.showMessageDialog(null, "Usuario no habilitado");}
 		
-			
 		}
+		
 		else{
-		System.out.println("Ingreso incorrecto");
 		JOptionPane.showMessageDialog(null, "Usuario o Contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);}
 		
 	}
@@ -238,22 +223,7 @@ public class Ingreso extends JFrame {
 		});
 		
 	}
-	
-	private void ventanaEncarg(Persona usuario){
-		
 
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaUsuario frame = new VentanaUsuario(usuario);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	
-	}
 	
 
 }

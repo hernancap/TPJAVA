@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import data.Conexion;
 import entity.Persona;
 import entity.Reserva;
@@ -189,7 +191,7 @@ public class CtrlPersona {
 		}
 	
     
-	}  
+	}
 
 }
 
