@@ -48,14 +48,12 @@ public class GestionElementos extends JFrame {
 	private JTextField txtNombre;
 
 	
-	
-	// falta validar campos-----------------------------------------------------------------------------------------------------
-
 
 	/**
 	 * Create the frame.
 	 */
 	public GestionElementos() {
+		setTitle("Elementos");
 		
 		listaElem = ctrlElem.mostrarElem();
 
@@ -119,7 +117,24 @@ public class GestionElementos extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				elem.setNombre(txtNombre.getText());
+				String nombreElem;
+				
+				if (validarCampos(boxTipo) == false){
+					
+					JOptionPane.showMessageDialog(null, "No has completado todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+				
+				if (txtNombre.getText().isEmpty()){
+					
+					nombreElem = teSelec;
+					
+				} else{
+					
+					nombreElem = txtNombre.getText();
+				}
+					
+				
+				elem.setNombre(nombreElem);
 				elem.setTipo(new TipoElemento());
 				elem.getTipo().setNombreTipo(teSelec);
 				
@@ -130,7 +145,7 @@ public class GestionElementos extends JFrame {
 				dispose();
 			
 				
-				
+				}
 			
 			}
 		});
@@ -204,5 +219,20 @@ public class GestionElementos extends JFrame {
 		jTableBinding.addColumnBinding(elementoBeanProperty_1).setColumnName("Tipo de elemento").setEditable(false);
 		//
 		jTableBinding.bind();
+	}
+	
+	private boolean validarCampos(JComboBox<String> boxTipo) {
+		
+		if(boxTipo.getSelectedIndex() != (-1)){
+				
+			
+			return true;
+			
+			
+		}else {  return false;}
+
+		
+		
+		
 	}
 }

@@ -46,7 +46,6 @@ public class TablaReservas extends JFrame {
 		
 
 		setResizable(false);
-		setAlwaysOnTop(true);
 
 		totalReservas = listRes;
 		

@@ -23,9 +23,13 @@ import java.util.List;
 
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JButton;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
+
+import com.toedter.calendar.JDateChooser;
+
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;
 import java.awt.event.ActionListener;
@@ -45,15 +49,14 @@ public class GestionTipos extends JFrame {
 	
 	private boolean editar = false;
 
-	
-	// falta validar campos-----------------------------------------------------------------------------------------------------
-
 
 
 	/**
 	 * Create the frame.
 	 */
 	public GestionTipos() {
+		setResizable(false);
+		setTitle("Tipos de Elementos");
 		
 		listaTip = ctrlTipo.mostrarTipos();
 		
@@ -127,6 +130,11 @@ public class GestionTipos extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if (validarCampos() == false){
+					
+					JOptionPane.showMessageDialog(null, "No has completado todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+				
 				tip.setNombreTipo(txtNombre.getText());
 				tip.setCantMaxRes(Integer.parseInt(txtCantMax.getText()));
 				tip.setHorasMax(Integer.parseInt(txtHorasMax.getText()));
@@ -140,7 +148,7 @@ public class GestionTipos extends JFrame {
 								
 				dispose();
 			
-				
+				}
 				
 			}
 		});
@@ -226,5 +234,20 @@ public class GestionTipos extends JFrame {
 		jTableBinding.addColumnBinding(tipoElementoBeanProperty_4).setColumnName("Horas m\u00E1x.").setEditable(false);
 		//
 		jTableBinding.bind();
+	}
+	
+	private boolean validarCampos() {
+		
+		if(!txtCantMax.getText().isEmpty() && !txtDiasAntic.getText().isEmpty() &&
+				!txtHorasMax.getText().isEmpty() && !txtNombre.getText().isEmpty()){
+			
+			return true;
+			
+			
+		}else {  return false;}
+
+		
+		
+		
 	}
 }

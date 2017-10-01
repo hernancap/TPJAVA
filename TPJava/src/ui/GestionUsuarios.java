@@ -19,6 +19,9 @@ import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import org.jdesktop.swingbinding.JTableBinding;
 import org.jdesktop.swingbinding.SwingBindings;
+
+import com.toedter.calendar.JDateChooser;
+
 import org.jdesktop.beansbinding.AutoBinding.UpdateStrategy;
 import org.jdesktop.beansbinding.BeanProperty;
 import javax.swing.JButton;
@@ -48,7 +51,6 @@ public class GestionUsuarios extends JFrame {
 	private JTextField txtContraseña;
 	private boolean editar = false;
 
-// falta: validar todos los campos, agrandar ventana---------------------------------------------------------------------
 
 	/**
 	 * Create the frame.
@@ -59,16 +61,15 @@ public class GestionUsuarios extends JFrame {
 	
 		
 		setResizable(false);
-		setAlwaysOnTop(true);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 554, 344);
+		setBounds(100, 100, 744, 344);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 21, 375, 232);
+		scrollPane.setBounds(10, 21, 570, 232);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -97,16 +98,16 @@ public class GestionUsuarios extends JFrame {
 			
 			}
 		});
-		btnEliminar.setBounds(203, 281, 182, 23);
+		btnEliminar.setBounds(398, 282, 182, 23);
 		contentPane.add(btnEliminar);
 		
 		
 		JCheckBox chkHabilitado = new JCheckBox("Habilitado");
-		chkHabilitado.setBounds(414, 253, 124, 23);
+		chkHabilitado.setBounds(604, 254, 124, 23);
 		contentPane.add(chkHabilitado);
 		
 		JComboBox boxCateg = new JComboBox();
-		boxCateg.setBounds(414, 232, 124, 20);
+		boxCateg.setBounds(604, 233, 124, 20);
 		contentPane.add(boxCateg);
 
 		boxCateg.addItem("admin");
@@ -151,6 +152,11 @@ public class GestionUsuarios extends JFrame {
 		btnAgregar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if (validarCampos(boxCateg) == false){
+					
+					JOptionPane.showMessageDialog(null, "No has completado todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+				} else {
+				
 				per.setApellido(txtApellido.getText());
 				per.setCategoria(((String) boxCateg.getSelectedItem()));
 				per.setContraseña(txtContraseña.getText());
@@ -165,66 +171,66 @@ public class GestionUsuarios extends JFrame {
 				
 				dispose();
 								
-				
+				}
 			}
 		});
-		btnAgregar.setBounds(414, 281, 124, 23);
+		btnAgregar.setBounds(604, 282, 124, 23);
 		contentPane.add(btnAgregar);
 		
 		
 		
-		btnEditar.setBounds(10, 281, 183, 23);
+		btnEditar.setBounds(205, 282, 183, 23);
 		contentPane.add(btnEditar);
 		
 		txtDni = new JTextField();
 		
 		
-		txtDni.setBounds(414, 33, 124, 20);
+		txtDni.setBounds(604, 34, 124, 20);
 		contentPane.add(txtDni);
 		txtDni.setColumns(10);
 		
 		JLabel lblDni = new JLabel("DNI");
-		lblDni.setBounds(414, 20, 124, 14);
+		lblDni.setBounds(604, 21, 124, 14);
 		contentPane.add(lblDni);
 		
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setBounds(402, 11, 2, 293);
+		separator.setBounds(590, 11, 2, 293);
 		contentPane.add(separator);
 		
 		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(414, 62, 124, 14);
+		lblNombre.setBounds(604, 63, 124, 14);
 		contentPane.add(lblNombre);
 		
 		txtNombre = new JTextField();
-		txtNombre.setBounds(414, 75, 124, 20);
+		txtNombre.setBounds(604, 76, 124, 20);
 		contentPane.add(txtNombre);
 		txtNombre.setColumns(10);
 		
 		JLabel lblApellido = new JLabel("Apellido");
-		lblApellido.setBounds(414, 106, 124, 14);
+		lblApellido.setBounds(604, 107, 124, 14);
 		contentPane.add(lblApellido);
 		
 		txtApellido = new JTextField();
-		txtApellido.setBounds(414, 118, 124, 20);
+		txtApellido.setBounds(604, 119, 124, 20);
 		contentPane.add(txtApellido);
 		txtApellido.setColumns(10);
 		
 		JLabel lblUsuario = new JLabel("Usuario");
-		lblUsuario.setBounds(414, 149, 124, 14);
+		lblUsuario.setBounds(604, 150, 124, 14);
 		contentPane.add(lblUsuario);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(414, 161, 124, 20);
+		txtUsuario.setBounds(604, 162, 124, 20);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
-		lblContrasea.setBounds(414, 192, 124, 14);
+		lblContrasea.setBounds(604, 193, 124, 14);
 		contentPane.add(lblContrasea);
 		
 		txtContraseña = new JTextField();
-		txtContraseña.setBounds(414, 204, 124, 20);
+		txtContraseña.setBounds(604, 205, 124, 20);
 		contentPane.add(txtContraseña);
 		txtContraseña.setColumns(10);
 		
@@ -263,5 +269,21 @@ public class GestionUsuarios extends JFrame {
 		//
 		jTableBinding.setEditable(false);
 		jTableBinding.bind();
+	}
+	
+	private boolean validarCampos(JComboBox<String> boxCateg) {
+		
+		if(boxCateg.getSelectedIndex() != (-1) && !txtApellido.getText().isEmpty() && !txtNombre.getText().isEmpty()
+				&& !txtContraseña.getText().isEmpty() && !txtDni.getText().isEmpty() && !txtUsuario.getText().isEmpty()){
+				
+			
+			return true;
+			
+			
+		}else {  return false;}
+
+		
+		
+		
 	}
 }

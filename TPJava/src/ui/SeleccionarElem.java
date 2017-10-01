@@ -38,7 +38,6 @@ public class SeleccionarElem extends JFrame {
 
 
 	public SeleccionarElem(ArrayList<Elemento> elemDisp, Reserva nuevaRes) {
-		setAlwaysOnTop(true);
 		
 		setResizable(false);
 		

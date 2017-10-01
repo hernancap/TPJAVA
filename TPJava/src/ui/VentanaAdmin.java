@@ -26,10 +26,11 @@ public class VentanaAdmin extends JFrame {
 	private ArrayList<Reserva> listRes = new ArrayList<Reserva>();
 
 
-	// falta bloquear ventana madre, evitar problemas en la eliminación de objetos---------------------------------------------------------
+	// falta bloquear ventana madre------------------------------------------------------------------
 
 
 	public VentanaAdmin(Persona usuario) {
+		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 319);
 		contentPane = new JPanel();

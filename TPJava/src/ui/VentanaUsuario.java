@@ -91,9 +91,6 @@ public class VentanaUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaUsuario(Persona usuario) {
-		
-		
-		
 		setResizable(false);
 		setTitle("Reservas");
 	
@@ -123,8 +120,6 @@ public class VentanaUsuario extends JFrame {
 				
 				listRes = ctrlRes.mostrarReservas(usuario.getId());
 				
-				setEnabled(false);
-												
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
