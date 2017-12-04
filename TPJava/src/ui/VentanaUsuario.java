@@ -81,11 +81,7 @@ public class VentanaUsuario extends JFrame {
 	private JComboBox boxTipoElem;
 	private JTextField txtTiempoRes;
 	
-	
-	
-	//falta bloquear ventana madre--------------------------------------------------------------------------------
-	
-	
+
 
 	/**
 	 * Create the frame.

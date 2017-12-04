@@ -41,7 +41,6 @@ public class Conexion {
 			e.printStackTrace();
 		}
 		cantConn++;
-		System.out.println("Conectado");
 		return conn;
 	}
 	

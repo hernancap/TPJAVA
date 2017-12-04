@@ -25,10 +25,6 @@ public class VentanaAdmin extends JFrame {
 	private CtrlReserva ctrlRes = new CtrlReserva();
 	private ArrayList<Reserva> listRes = new ArrayList<Reserva>();
 
-
-	// falta bloquear ventana madre------------------------------------------------------------------
-
-
 	public VentanaAdmin(Persona usuario) {
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
